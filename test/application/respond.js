@@ -36,9 +36,9 @@ describe('app.respond', function(){
 
   describe('when this.type === null', function(){
     it('should not send Content-Type header', function(done){
-      var app = koa();
+      var app = new Koa();
 
-      app.use(function*() {
+      app.use(function *(){
         this.body = '';
         this.type = null;
       });
@@ -53,8 +53,8 @@ describe('app.respond', function(){
           res.should.not.have.header('content-type');
           done();
         });
-    })
-  })
+    });
+  });
 
   describe('when HEAD is used', function(){
     it('should not respond with the body', function(done){
